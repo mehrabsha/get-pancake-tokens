@@ -1,5 +1,8 @@
 var Web3 = require('web3')
 var fs = require('fs')
+const TelegramBot = require('node-telegram-bot-api');
+const token = '5031522977:AAEcT9pv5GxnxT7MMuGMMqSkJkyl433DiaA';
+const bot = new TelegramBot(token, {polling: true});
 // Show Web3 where it needs to look for the Ethereum node
 web3 = new Web3(
   new Web3.providers.HttpProvider('https://bsc-dataseed1.ninicoin.io')
@@ -945,6 +948,8 @@ const main = async () => {
         ' Address: ',
         token0
       )
+      bot.sendMessage(189639606, 'id : '+  i + ' Token ' + `${token0Symbol}/${token1Symbol}` + ' Address: ' +token0);
+
 
       fs.readFile('res.json', function readFileCallback(err, data) {
         if (err) {
