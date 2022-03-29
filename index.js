@@ -920,7 +920,9 @@ var PancakeFactoryContract = new web3.eth.Contract(
 
 // Put it all together in a call and return the result to the console
 // FUNCTION must the name of the function you want to call.
-
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
 const main = async () => {
   const pairLength = await PancakeFactoryContract.methods
     .allPairsLength()
@@ -928,6 +930,7 @@ const main = async () => {
   console.log('length', pairLength)
   for (let i = 0; i < pairLength; i++) {
     try {
+      await sleep(300)
       const pairResult = await PancakeFactoryContract.methods.allPairs(i).call()
       var pairContract = new web3.eth.Contract(abiPair, pairResult)
       const token0 = await pairContract.methods.token0().call()
