@@ -929,8 +929,8 @@ const main = async () => {
     .call()
   console.log('length', pairLength)
   for (let i = 0; i < pairLength; i++) {
+    await sleep(1000)
     try {
-      await sleep(300)
       const pairResult = await PancakeFactoryContract.methods.allPairs(i).call()
       var pairContract = new web3.eth.Contract(abiPair, pairResult)
       const token0 = await pairContract.methods.token0().call()
