@@ -920,7 +920,7 @@ var PancakeFactoryContract = new web3.eth.Contract(
 
 // Put it all together in a call and return the result to the console
 // FUNCTION must the name of the function you want to call.
-function sleep(ms: number) {
+function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 const main = async () => {
